@@ -1,6 +1,7 @@
 package views;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import models.Medico;
 import models.Secretaria;
 
@@ -113,8 +114,10 @@ public class Login extends javax.swing.JFrame {
                     Principal p = new Principal("m");
                     p.setVisible(true);
                     this.dispose();
+                    return;
                 }
             }
+            JOptionPane.showMessageDialog(rootPane, "Usuário não encontrado!");
         }
         else{
 //            System.out.println(cmbTipo.getItemAt(1));
@@ -123,8 +126,10 @@ public class Login extends javax.swing.JFrame {
                     Principal p = new Principal("s");
                     p.setVisible(true);
                     this.dispose();
+                    return;
                 }
             }
+            JOptionPane.showMessageDialog(rootPane, "Usuário não encontrado!");
         }
         
     }//GEN-LAST:event_btnLoginActionPerformed
