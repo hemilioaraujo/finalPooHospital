@@ -438,7 +438,7 @@ public class CadastroConsulta extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalvarAlteracoesActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        String sobre = "Produzido por: Hemílio Lauro e Gustavo de Paula\n"
+        String sobre = "Produzido por: Gustavo de Paula, Hemílio Lauro e Matheus Barbosa\n"
                 + "Disciplina: Programação orientada a objetos\n"
                 + "Professor: Robson\n"
                 + "Ano: 2019";
