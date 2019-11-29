@@ -1,11 +1,11 @@
 # NetBeans specific
-/nbproject/private/*
-/build/*
-/nbbuild/*
-/dist/*
-/nbdist/*
-nbactions.xml
-nb-configuration.xml
-/trabalho_final_hospital/build/
-/trabalho_final_hospital/dist/
-/trabalho_final_hospital/nbproject/private/
+/trabalho_final_hospital/nbproject/private/*
+/trabalho_final_hospital/build/*
+/trabalho_final_hospital/nbbuild/*
+/trabalho_final_hospital/dist/*
+/trabalho_final_hospital/nbdist/*
+/trabalho_final_hospital/nbactions.xml
+/trabalho_final_hospital/nb-configuration.xml
+/trabalho_final_hospital/trabalho_final_hospital/build/
+/trabalho_final_hospital/trabalho_final_hospital/dist/
+/trabalho_final_hospital/trabalho_final_hospital/nbproject/private/
