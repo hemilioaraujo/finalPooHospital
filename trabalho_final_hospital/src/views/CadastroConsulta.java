@@ -78,6 +78,7 @@ public class CadastroConsulta extends javax.swing.JFrame {
         menuFerramentas = new javax.swing.JMenu();
         menuCadCon = new javax.swing.JMenuItem();
         menuCadPac = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
         menuAjuda = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
 
@@ -206,6 +207,15 @@ public class CadastroConsulta extends javax.swing.JFrame {
             }
         });
         menuFerramentas.add(menuCadPac);
+
+        jMenuItem3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.SHIFT_MASK));
+        jMenuItem3.setText("Logout");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        menuFerramentas.add(jMenuItem3);
 
         jMenuBar1.add(menuFerramentas);
 
@@ -455,6 +465,12 @@ public class CadastroConsulta extends javax.swing.JFrame {
         btnBuscarCpfActionPerformed(evt);
     }//GEN-LAST:event_btnExcluirActionPerformed
 
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        Login login = new Login();
+        login.setVisible(true);
+        
+        this.dispose();
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
     
     private String dataParaBanco(String d){
         String data = d; 
@@ -537,6 +553,7 @@ public class CadastroConsulta extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
