@@ -40,9 +40,8 @@ public class Principal extends javax.swing.JFrame {
 
         btnCadastrarPacientes = new javax.swing.JButton();
         btnCadastrarConsulta = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuFerramentas = new javax.swing.JMenu();
         menuCadCon = new javax.swing.JMenuItem();
@@ -51,6 +50,8 @@ public class Principal extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(640, 508));
+        getContentPane().setLayout(null);
 
         btnCadastrarPacientes.setText("Cadastrar Pacientes");
         btnCadastrarPacientes.addActionListener(new java.awt.event.ActionListener() {
@@ -58,6 +59,8 @@ public class Principal extends javax.swing.JFrame {
                 btnCadastrarPacientesActionPerformed(evt);
             }
         });
+        getContentPane().add(btnCadastrarPacientes);
+        btnCadastrarPacientes.setBounds(60, 360, 167, 70);
 
         btnCadastrarConsulta.setText("Cadastrar Consulta");
         btnCadastrarConsulta.addActionListener(new java.awt.event.ActionListener() {
@@ -65,15 +68,17 @@ public class Principal extends javax.swing.JFrame {
                 btnCadastrarConsultaActionPerformed(evt);
             }
         });
+        getContentPane().add(btnCadastrarConsulta);
+        btnCadastrarConsulta.setBounds(240, 360, 167, 70);
 
-        jLabel1.setFont(new java.awt.Font("DejaVu Math TeX Gyre", 1, 36)); // NOI18N
-        jLabel1.setText("HOSPITAL");
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/hospital.png"))); // NOI18N
+        jLabel4.setText("jLabel4");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(10, 20, 49, 15);
 
-        jLabel2.setFont(new java.awt.Font("DejaVu Math TeX Gyre", 1, 36)); // NOI18N
-        jLabel2.setText("vai com");
-
-        jLabel3.setFont(new java.awt.Font("DejaVu Math TeX Gyre", 1, 36)); // NOI18N
-        jLabel3.setText("DEUS!");
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/hospital.png"))); // NOI18N
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(0, 0, 640, 490);
 
         menuFerramentas.setText("Ferramentas");
 
@@ -117,41 +122,6 @@ public class Principal extends javax.swing.JFrame {
 
         setJMenuBar(jMenuBar1);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(86, 86, 86)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnCadastrarPacientes)
-                        .addGap(31, 31, 31)
-                        .addComponent(btnCadastrarConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(85, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(68, 68, 68)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCadastrarPacientes)
-                    .addComponent(btnCadastrarConsulta))
-                .addGap(137, 137, 137))
-        );
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -188,7 +158,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1MouseClicked
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        String sobre = "Produzido por: Hemílio Lauro e Gustavo de Paula\n"
+        String sobre = "Produzido por: Gustavo de Paula, Hemílio Lauro e Matheus Barbosa\n"
                 + "Disciplina: Programação orientada a objetos\n"
                 + "Professor: Robson\n"
                 + "Ano: 2019";
@@ -239,9 +209,8 @@ public class Principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastrarConsulta;
     private javax.swing.JButton btnCadastrarPacientes;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenu menuAjuda;
