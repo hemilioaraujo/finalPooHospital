@@ -61,7 +61,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnCadastrarPacientes);
-        btnCadastrarPacientes.setBounds(60, 360, 167, 70);
+        btnCadastrarPacientes.setBounds(120, 360, 200, 70);
 
         btnCadastrarConsulta.setText("Cadastrar Consulta");
         btnCadastrarConsulta.addActionListener(new java.awt.event.ActionListener() {
@@ -70,7 +70,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnCadastrarConsulta);
-        btnCadastrarConsulta.setBounds(240, 360, 167, 70);
+        btnCadastrarConsulta.setBounds(350, 360, 200, 70);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/hospital.png"))); // NOI18N
         jLabel4.setText("jLabel4");
