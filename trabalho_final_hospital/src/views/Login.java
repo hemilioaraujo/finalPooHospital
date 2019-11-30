@@ -11,6 +11,8 @@ public class Login extends javax.swing.JFrame {
     
     ArrayList<Secretaria> s = new ArrayList<>();
     ArrayList<Medico> m = new ArrayList<>();
+    Medico medico = new Medico();
+    Secretaria secretaria = new Secretaria();
     
     public Login() {
         inserir();
@@ -107,30 +109,30 @@ public class Login extends javax.swing.JFrame {
         login = txtLogin.getText();
         senha = String.copyValueOf(txtSenha.getPassword());
         tipo = cmbTipo.getSelectedIndex();
+              
+        
+            System.out.println("OK");
         
         if (tipo == 0){
 //            System.out.println(cmbTipo.getItemAt(0));
-            for (int i = 0; i < m.size(); i++) {
-                if(login.equals(m.get(i).getLogin()) && senha.equals(m.get(i).getSenha())){
-                    Principal p = new Principal("m");
-                    p.setVisible(true);
-                    this.dispose();
-                    return;
-                }
+            if(medico.login(m, login, senha, 1)){
+                Principal p = new Principal("m");
+                p.setVisible(true);
+                this.dispose();
+                return;
             }
-            JOptionPane.showMessageDialog(rootPane, "Usuário não encontrado!");
+            JOptionPane.showMessageDialog(rootPane, "Médico não encontrado!");
         }
         else{
 //            System.out.println(cmbTipo.getItemAt(1));
-            for (int i = 0; i < s.size(); i++) {
-                if(login.equals(s.get(i).getLogin()) && senha.equals(s.get(i).getSenha())){
-                    Principal p = new Principal("s");
-                    p.setVisible(true);
-                    this.dispose();
-                    return;
-                }
+            if(secretaria.login(s, login, senha, 1.2)){
+                Principal p = new Principal("s");
+                p.setVisible(true);
+                this.dispose();
+                return;
             }
-            JOptionPane.showMessageDialog(rootPane, "Usuário não encontrado!");
+            
+            JOptionPane.showMessageDialog(rootPane, "Secretária não encontrado!");
         }
         
     }//GEN-LAST:event_btnLoginActionPerformed
