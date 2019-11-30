@@ -46,6 +46,7 @@ public class Principal extends javax.swing.JFrame {
         menuFerramentas = new javax.swing.JMenu();
         menuCadCon = new javax.swing.JMenuItem();
         menuCadPac = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
         menuAjuda = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
 
@@ -99,6 +100,15 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         menuFerramentas.add(menuCadPac);
+
+        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.SHIFT_MASK));
+        jMenuItem2.setText("Logout");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        menuFerramentas.add(jMenuItem2);
 
         jMenuBar1.add(menuFerramentas);
 
@@ -166,6 +176,13 @@ public class Principal extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(rootPane, sobre);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        Login login = new Login();
+        login.setVisible(true);
+        
+        this.dispose();
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
     
     
     /**
@@ -213,6 +230,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenu menuAjuda;
     private javax.swing.JMenuItem menuCadCon;
     private javax.swing.JMenuItem menuCadPac;
