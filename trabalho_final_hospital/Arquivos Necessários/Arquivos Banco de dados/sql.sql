@@ -18,9 +18,11 @@ create table consulta(
 select * from paciente;
 select * from consulta;
 
-insert into paciente(cpf,nome,idade,genero) values ('123.123.123-12', 'joaquim', '1988/09/13','M');
-insert into paciente(cpf,nome,idade,genero) values ('321.321.321-32', 'joao', '1988/09/14','M');
+insert into paciente(cpf,nome,nascimento,sexo) values ('123.123.123-12', 'joaquim', '1988/09/13','M');
+insert into paciente(cpf,nome,nascimento,sexo) values ('321.321.321-32', 'joao', '1988/09/14','M');
 insert into consulta(dataConsulta, cpfPaciente) values ('2019/11/10', '123.123.123-12');
 insert into consulta(dataConsulta, cpfPaciente) values ('2019/11/11', '321.321.321-32');
+insert into paciente(cpf,nome,nascimento,sexo) values ('321.321.321-12', 'maria', '1988/09/25','F');
 
-SELECT * FROM paciente INNER JOIN consulta on paciente.cpf = consulta.cpfPaciente and paciente.nome = 'joaquim';
+
+SELECT * FROM paciente LEFT JOIN consulta on paciente.cpf = consulta.cpfPaciente and paciente.nome = 'maria';
