@@ -114,7 +114,6 @@ public class Login extends javax.swing.JFrame {
             System.out.println("OK");
         
         if (tipo == 0){
-//            System.out.println(cmbTipo.getItemAt(0));
             if(medico.login(m, login, senha, 1)){
                 Principal p = new Principal("m");
                 p.setVisible(true);
@@ -124,7 +123,6 @@ public class Login extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Médico não encontrado!");
         }
         else{
-//            System.out.println(cmbTipo.getItemAt(1));
             if(secretaria.login(s, login, senha, 1.2)){
                 Principal p = new Principal("s");
                 p.setVisible(true);
