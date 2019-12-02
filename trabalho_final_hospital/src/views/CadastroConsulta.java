@@ -343,17 +343,45 @@ public class CadastroConsulta extends javax.swing.JFrame {
         dataConsulta = dataParaBanco(txtDataConsulta.getText());
         cpfPaciente = txtCpf.getText();
         
-        ControllerConsulta cc = new ControllerConsulta(dataConsulta, cpfPaciente);
-        cc.salvar();
+        if(dataConsulta.equals("    /  /  ") || cpfPaciente.equals("   .   .   -  "))
+            JOptionPane.showMessageDialog(rootPane, "Por favor, preencha todos os campos!");
+        else {
+            ControllerConsulta cc = new ControllerConsulta(dataConsulta, cpfPaciente);
+            cc.salvar();
+        }
         
-        btnBuscarCpfActionPerformed(evt);
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void menuCadConActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCadConActionPerformed
         CadastroPaciente cp = new CadastroPaciente(tipo);
         cp.setVisible(true);
 
-        this.dispose();
+        this.dispose();ControllerConsulta cc = new ControllerConsulta(id);
+            rs = cc.buscar();
+
+            if(rs != null){
+                try {
+                    rs.next();
+                    lblNome.setText(rs.getString("paciente.nome"));
+
+                    if(rs.getString("sexo").equalsIgnoreCase("F"))
+                        lblGenero.setText("Feminino");
+                    else
+                        lblGenero.setText("Masculino");
+
+                    lblDataNascimento.setText(dataParaBanco(tracoBarra(rs.getString("nascimento"))));
+                    nascimento = dataParaBanco(tracoBarra(rs.getString("nascimento")));
+                    String idade = String.valueOf(idade(nascimento));
+                    lblIdade.setText(idade);
+
+                    txtCpf.setText(rs.getString("cpf"));
+
+                    txtDataConsulta.setText(dataParaBanco(tracoBarra(rs.getString("dataConsulta"))));
+
+                } catch (Exception e) {
+                }
+
+            }
     }//GEN-LAST:event_menuCadConActionPerformed
 
     private void menuCadPacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCadPacActionPerformed
@@ -366,85 +394,99 @@ public class CadastroConsulta extends javax.swing.JFrame {
     private void btnBuscarCpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarCpfActionPerformed
         cpfPaciente = txtCpf.getText();
         
-        ControllerPacientes cp = new ControllerPacientes(nome, cpfPaciente, nascimento, sexo);
-        rs = cp.buscar();
-        
-        if(rs != null){
-            try {
-                rs.next();
-            
-                lblNome.setText(rs.getString("nome"));
-                lblDataNascimento.setText(dataParaBanco(tracoBarra(rs.getString("nascimento"))));
-                
-                if(rs.getString("sexo").equalsIgnoreCase("F"))
-                    lblGenero.setText("Feminino");
-                else
-                    lblGenero.setText("Masculino");
-                
-                nascimento = dataParaBanco(tracoBarra(rs.getString("nascimento")));
-                String idade = String.valueOf(idade(nascimento));
-                
-                lblIdade.setText(idade);
-                
-                txtDataConsulta.setText("");
-                txtIdConsulta.setText("");
-                
-                                
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(rootPane, e);
+        if(cpfPaciente.equals("   .   .   -  "))
+            JOptionPane.showMessageDialog(rootPane, "Preencha o campo de cpf para poder fazer a busca!");
+        else {
+            ControllerPacientes cp = new ControllerPacientes(nome, cpfPaciente, nascimento, sexo);
+            rs = cp.buscar();
+
+
+
+            if(rs != null){
+                try {
+                    rs.next();
+
+                    lblNome.setText(rs.getString("nome"));
+                    lblDataNascimento.setText(dataParaBanco(tracoBarra(rs.getString("nascimento"))));
+
+                    if(rs.getString("sexo").equalsIgnoreCase("F"))
+                        lblGenero.setText("Feminino");
+                    else
+                        lblGenero.setText("Masculino");
+
+                    nascimento = dataParaBanco(tracoBarra(rs.getString("nascimento")));
+                    String idade = String.valueOf(idade(nascimento));
+
+                    lblIdade.setText(idade);
+
+                    txtDataConsulta.setText("");
+                    txtIdConsulta.setText("");
+
+
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(rootPane, "CPF não encontrado");
+                }
             }
-        }
         
-        rs = cp.buscarConsultas();
         
-        if(rs != null){
-            try {
-                tblConsultas.setModel(DbUtils.resultSetToTableModel(rs));
-            } catch (Exception e) {
+            rs = cp.buscarConsultas();
+
+            if(rs != null){
+                try {
+                    tblConsultas.setModel(DbUtils.resultSetToTableModel(rs));
+                } catch (Exception e) {
+                }
+
             }
-            
         }
     }//GEN-LAST:event_btnBuscarCpfActionPerformed
 
     private void btnBuscarConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarConsultaActionPerformed
-        id = Integer.parseInt(txtIdConsulta.getText());
+        String id = txtIdConsulta.getText();
         
-        ControllerConsulta cc = new ControllerConsulta(id);
-        rs = cc.buscar();
         
-        if(rs != null){
-            try {
-                rs.next();
-                lblNome.setText(rs.getString("paciente.nome"));
-                
-                if(rs.getString("sexo").equalsIgnoreCase("F"))
-                    lblGenero.setText("Feminino");
-                else
-                    lblGenero.setText("Masculino");
-                
-                lblDataNascimento.setText(dataParaBanco(tracoBarra(rs.getString("nascimento"))));
-                nascimento = dataParaBanco(tracoBarra(rs.getString("nascimento")));
-                String idade = String.valueOf(idade(nascimento));
-                lblIdade.setText(idade);
-                
-                txtCpf.setText(rs.getString("cpf"));
-                
-                txtDataConsulta.setText(dataParaBanco(tracoBarra(rs.getString("dataConsulta"))));
-                
-            } catch (Exception e) {
+        if(id.isBlank())
+            JOptionPane.showMessageDialog(rootPane, "Por favor, preencha todos os campos!");
+        else {
+            ControllerConsulta cc = new ControllerConsulta(Integer.parseInt(id));
+            rs = cc.buscar();
+
+            if(rs != null){
+                try {
+                    rs.next();
+                    lblNome.setText(rs.getString("paciente.nome"));
+
+                    if(rs.getString("sexo").equalsIgnoreCase("F"))
+                        lblGenero.setText("Feminino");
+                    else
+                        lblGenero.setText("Masculino");
+
+                    lblDataNascimento.setText(dataParaBanco(tracoBarra(rs.getString("nascimento"))));
+                    nascimento = dataParaBanco(tracoBarra(rs.getString("nascimento")));
+                    String idade = String.valueOf(idade(nascimento));
+                    lblIdade.setText(idade);
+
+                    txtCpf.setText(rs.getString("cpf"));
+
+                    txtDataConsulta.setText(dataParaBanco(tracoBarra(rs.getString("dataConsulta"))));
+
+                } catch (Exception e) {}
             }
-            
         }
     }//GEN-LAST:event_btnBuscarConsultaActionPerformed
 
     private void btnSalvarAlteracoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarAlteracoesActionPerformed
-        id = Integer.parseInt(txtIdConsulta.getText());
+        String idConsulta = txtIdConsulta.getText();
         dataConsulta = dataParaBanco(txtDataConsulta.getText());
         
-        ControllerConsulta cc = new ControllerConsulta(id, dataConsulta);
-        cc.atualizar();
-        
-        btnBuscarCpfActionPerformed(evt);
+        if(dataConsulta.equals("    /  /  ") || idConsulta.isBlank())
+            JOptionPane.showMessageDialog(rootPane, "Por favor, preencha todos os campos!");
+        else {
+            ControllerConsulta cc = new ControllerConsulta(Integer.parseInt(idConsulta), dataConsulta);
+            cc.atualizar();
+
+            btnBuscarCpfActionPerformed(evt);
+        }
     }//GEN-LAST:event_btnSalvarAlteracoesActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
@@ -457,12 +499,16 @@ public class CadastroConsulta extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-        id = Integer.parseInt(txtIdConsulta.getText());
+        String id = txtIdConsulta.getText();
         
-        ControllerConsulta cc = new ControllerConsulta(id);
-        cc.excluir();
-        
-        btnBuscarCpfActionPerformed(evt);
+        if(id.isBlank())
+            JOptionPane.showMessageDialog(rootPane, "Por favor, preencha o campo id!");
+        else {
+            ControllerConsulta cc = new ControllerConsulta(Integer.parseInt(id));
+            cc.excluir();
+
+            btnBuscarCpfActionPerformed(evt);
+        }
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed

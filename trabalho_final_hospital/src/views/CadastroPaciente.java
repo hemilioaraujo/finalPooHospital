@@ -37,7 +37,6 @@ public class CadastroPaciente extends javax.swing.JFrame {
         this.tipo = tipo;
         this.rs = null;
         initComponents();
-//        System.out.println(tipo);
         if (tipo == "s")
             btnExcluir.setVisible(false);
         this.setLocationRelativeTo(null);
@@ -278,8 +277,12 @@ public class CadastroPaciente extends javax.swing.JFrame {
         nascimento = dataParaBanco(txtDataNascimento.getText());
         sexo = (String) cmbGenero.getSelectedItem();
         
-        ControllerPacientes cp = new ControllerPacientes(nome, cpf,nascimento, sexo);
-        cp.salvar();
+        if(nome.isBlank() || cpf.equals("   .   .   -  ") || nascimento.equals("    /  /  ") || sexo.isBlank())
+            JOptionPane.showMessageDialog(rootPane, "Por favor, preencha todos os campos!");
+        else {
+            ControllerPacientes cp = new ControllerPacientes(nome, cpf,nascimento, sexo);
+            cp.salvar();
+        }
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnSalvarAlteracoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarAlteracoesActionPerformed
@@ -288,8 +291,12 @@ public class CadastroPaciente extends javax.swing.JFrame {
         nascimento = dataParaBanco(txtDataNascimento.getText());
         sexo = (String) cmbGenero.getSelectedItem();
         
-        ControllerPacientes cp = new ControllerPacientes(nome, cpf,nascimento, sexo);
-        cp.atualizar();
+        if(nome.isBlank() || cpf.isBlank() || nascimento.equals("    /  /  ") || sexo.isBlank())
+            JOptionPane.showMessageDialog(rootPane, "Por favor, preencha todos os campos!");
+        else {
+            ControllerPacientes cp = new ControllerPacientes(nome, cpf,nascimento, sexo);
+            cp.atualizar();
+        }
     }//GEN-LAST:event_btnSalvarAlteracoesActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
@@ -318,7 +325,7 @@ public class CadastroPaciente extends javax.swing.JFrame {
                     cmbGenero.setSelectedIndex(1);
                 
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(rootPane, e);
+                JOptionPane.showMessageDialog(rootPane, "Nenhum paciente encontrado!");
             }
         }
         
@@ -327,8 +334,7 @@ public class CadastroPaciente extends javax.swing.JFrame {
         if(rs != null){
             try {
                 tblConsultas.setModel(DbUtils.resultSetToTableModel(rs));
-            } catch (Exception e) {
-            }
+            } catch (Exception e) {}
             
         }
     }//GEN-LAST:event_btnBuscarActionPerformed

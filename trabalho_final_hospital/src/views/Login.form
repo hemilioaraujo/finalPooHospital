@@ -71,7 +71,7 @@
   <SubComponents>
     <Component class="javax.swing.JTextField" name="txtLogin">
       <Properties>
-        <Property name="text" type="java.lang.String" value="zuleide"/>
+        <Property name="text" type="java.lang.String" value="joao"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnLogin">

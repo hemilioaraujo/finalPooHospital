@@ -44,7 +44,7 @@ public class Login extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        txtLogin.setText("zuleide");
+        txtLogin.setText("joao");
 
         btnLogin.setText("Login");
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
@@ -109,32 +109,29 @@ public class Login extends javax.swing.JFrame {
         login = txtLogin.getText();
         senha = String.copyValueOf(txtSenha.getPassword());
         tipo = cmbTipo.getSelectedIndex();
-              
         
-            System.out.println("OK");
-        
-        if (tipo == 0){
-//            System.out.println(cmbTipo.getItemAt(0));
-            if(medico.login(m, login, senha, 1)){
-                Principal p = new Principal("m");
-                p.setVisible(true);
-                this.dispose();
-                return;
+        if(login.isBlank() || senha.isBlank())
+            JOptionPane.showMessageDialog(rootPane, "Por favor, preencha todos os campos!");
+        else {
+            if (tipo == 0){
+                if(medico.login(m, login, senha, 1)){
+                    Principal p = new Principal("m");
+                    p.setVisible(true);
+                    this.dispose();
+                    return;
+                }
+                JOptionPane.showMessageDialog(rootPane, "Médico não encontrado!");
             }
-            JOptionPane.showMessageDialog(rootPane, "Médico não encontrado!");
-        }
-        else{
-//            System.out.println(cmbTipo.getItemAt(1));
-            if(secretaria.login(s, login, senha, 1.2)){
-                Principal p = new Principal("s");
-                p.setVisible(true);
-                this.dispose();
-                return;
+            else{
+                if(secretaria.login(s, login, senha, 1.2)){
+                    Principal p = new Principal("s");
+                    p.setVisible(true);
+                    this.dispose();
+                    return;
+                }
+                JOptionPane.showMessageDialog(rootPane, "Secretária não encontrada!");
             }
-            
-            JOptionPane.showMessageDialog(rootPane, "Secretária não encontrado!");
-        }
-        
+        }        
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void txtSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSenhaActionPerformed
